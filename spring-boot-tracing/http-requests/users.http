@@ -1,0 +1,27 @@
+### Get all users
+GET http://localhost:8080/api/users
+
+### Get user by ID
+GET http://localhost:8080/api/users/1
+
+### Get cats for specific user
+GET http://localhost:8080/api/users/1/cats
+
+### Create new user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "name": "John Doe"
+}
+
+### Update user
+PUT http://localhost:8080/api/users/1
+Content-Type: application/json
+
+{
+  "name": "John Smith"
+}
+
+### Delete user
+DELETE http://localhost:8080/api/users/1

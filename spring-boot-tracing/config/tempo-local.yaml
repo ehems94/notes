@@ -1,0 +1,30 @@
+server:
+  http_listen_port: 3200
+
+distributor:
+  receivers:
+    otlp:
+      protocols:
+        http:
+        grpc:
+
+compactor:
+  compaction:
+    block_retention: 24h   # Keep traces for 24 hours
+
+#overrides:
+#  defaults:
+#    ingestion_rate: 50000   # Maximum traces per second
+#    ingestion_burst_size: 100000
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /tmp/traces
+
+metrics_generator:
+  registry:
+    external_labels:
+      source: tempo
+      cluster: docker-compose

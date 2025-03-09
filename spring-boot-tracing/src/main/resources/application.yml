@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: spring-boot-tracing
+  datasource:
+    url: jdbc:mysql://localhost:3306/springapp
+    username: springuser
+    password: springpass
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        generate_statistics: true
+
+otel:
+  propagators:
+    - tracecontext
+    - b3
+  resource:
+    attributes:
+      deployment.environment: dev
+      service:
+        name: cats
+        namespace: myapp
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+  tracing:
+    sampling:
+      probability: 1.0
+    enabled: true
+  otlp:
+    metrics:
+      export:
+        url: http://localhost:4318/v1/metrics
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+  file:
+    name: logs/spring-boot-app.log

@@ -1,0 +1,28 @@
+### Get all cats
+GET http://localhost:8080/api/cats
+
+### Get cat by ID
+GET http://localhost:8080/api/cats/1
+
+### Create new cat
+POST http://localhost:8080/api/cats
+Content-Type: application/json
+
+{
+  "name": "Whiskers",
+  "age": 3,
+  "userId": 1
+}
+
+### Update cat
+PUT http://localhost:8080/api/cats/1
+Content-Type: application/json
+
+{
+  "name": "Mr. Whiskers",
+  "age": 4,
+  "userId": 1
+}
+
+### Delete cat
+DELETE http://localhost:8080/api/cats/1

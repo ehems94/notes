@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  grafana:
+    image: grafana/grafana:10.3.0
+    network_mode: "host"
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_FEATURE_TOGGLES_ENABLE=traceqlEditor
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_USER=admin
+    volumes:
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+
+  loki:
+    image: grafana/loki:2.9.0
+    network_mode: "host"
+    command: -config.file=/etc/loki/config.yaml
+    ports:
+      - "3100:3100"
+    volumes:
+      - ./config/loki-local.yaml:/etc/loki/config.yaml
+      - loki-data:/loki
+
+  tempo:
+    image: grafana/tempo:2.7.0
+    network_mode: "host"
+    command: -config.file=/etc/tempo/tempo.yaml
+    ports:
+      - "3200:3200"
+      - "4317:4317"
+      - "4318:4318"
+    volumes:
+      - ./config/tempo-local.yaml:/etc/tempo/tempo.yaml
+      - tempo-data:/tmp
+
+  promtail:
+    image: grafana/promtail:2.9.0
+    network_mode: "host"
+    volumes:
+      - /home/spiritum/dev/kotlin/spring-boot-tracing/logs:/var/log/app
+      - ./config/promtail.yaml:/etc/promtail/config.yml
+    command: -config.file=/etc/promtail/config.yml
+
+  prometheus:
+    image: prom/prometheus:v2.48.0
+    network_mode: "host"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+
+  mysql:
+    image: mysql:8.0
+    network_mode: "host"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=springapp
+      - MYSQL_USER=springuser
+      - MYSQL_PASSWORD=springpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  grafana-data:
+  loki-data:
+  tempo-data:
+  mysql-data:
+  prometheus-data:
