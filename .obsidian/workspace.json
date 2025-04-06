@@ -172,9 +172,20 @@
   },
   "active": "4b4ad33a7f892878",
   "lastOpenFiles": [
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/dto/UserDto.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/service/UserService.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/service/CatService.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/dto/CatDto.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/repository/CatRepository.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/repository/UserRepository.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/controller/UserController.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/entity/Cat.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/entity/User.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/controller/HelloController.kt",
+    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/controller/CatController.kt",
+    "spring-boot-tracing/README.md",
     "C/Monitoring.md",
     "README.md",
-    "C",
     "Welcome.md"
   ]
 }
