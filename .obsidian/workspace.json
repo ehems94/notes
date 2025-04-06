@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C/Monitoring.md",
+                "file": "Split/Plan.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Monitoring"
+              "title": "Plan"
             }
           }
         ]
@@ -172,6 +172,10 @@
   },
   "active": "4b4ad33a7f892878",
   "lastOpenFiles": [
+    "README.md",
+    "Split/Plan.md",
+    "C/Monitoring.md",
+    "Split",
     "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/dto/UserDto.kt",
     "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/service/UserService.kt",
     "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/service/CatService.kt",
@@ -181,11 +185,7 @@
     "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/controller/UserController.kt",
     "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/entity/Cat.kt",
     "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/entity/User.kt",
-    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/controller/HelloController.kt",
-    "spring-boot-tracing/src/main/kotlin/com/example/springboottracing/controller/CatController.kt",
     "spring-boot-tracing/README.md",
-    "C/Monitoring.md",
-    "README.md",
     "Welcome.md"
   ]
 }
