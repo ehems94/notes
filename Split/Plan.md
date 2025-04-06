@@ -2,6 +2,7 @@
 	- Monorepo C
 	- Monorepo librairies
 	- Monorepo M
+- Kotest
 - Sprint review à la fin des sprints - 30min par bloc
 	- Division par "blocs" : split m/c, sujet Mat, sujet Pie...
 	- Support : JIRA + **page confluence à remplir en amont ?**
